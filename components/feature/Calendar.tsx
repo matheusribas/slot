@@ -13,7 +13,7 @@ import { createEventsServicePlugin } from "@schedule-x/events-service";
 import "temporal-polyfill/global";
 import "@schedule-x/theme-shadcn/dist/index.css";
 
-export default function CalendarApp() {
+export default function Calendar() {
   const eventsService = useState(() => createEventsServicePlugin())[0];
   const [dayBoundaries] = useState({
     start: "06:00",
