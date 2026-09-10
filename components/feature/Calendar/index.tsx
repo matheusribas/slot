@@ -12,6 +12,7 @@ import {
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 import "temporal-polyfill/global";
 import "@schedule-x/theme-shadcn/dist/index.css";
+import "./styles.css";
 
 export default function Calendar() {
   const eventsService = useState(() => createEventsServicePlugin())[0];

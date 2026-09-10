@@ -1,6 +1,5 @@
 import Calendar from "@/components/feature/Calendar";
-import { Button } from "@/components/ui/button";
-import { PlusIcon } from "lucide-react";
+import { ModalCreateEvent } from "@/components/feature/ModalCreateEvent";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,10 +17,7 @@ export default function Home() {
           </p>
         </div>
 
-        <Button variant="default" size="lg" className="flex gap-2">
-          <PlusIcon />
-          Novo agendamento
-        </Button>
+        <ModalCreateEvent />
       </div>
 
       <Calendar />
