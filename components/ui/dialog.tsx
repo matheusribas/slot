@@ -93,7 +93,7 @@ function DialogMain({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="dialog-main"
       className={cn(
-        "flex flex-col gap-2 -mx-4 no-scrollbar max-h-[50vh] overflow-y-auto px-4",
+        "flex flex-col gap-2 -mx-4 no-scrollbar max-h-[50vh] overflow-y-auto px-4 py-1",
         className,
       )}
       {...props}
