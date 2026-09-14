@@ -52,7 +52,7 @@ export function ModalCreateEvent() {
           <DialogHeader>
             <DialogTitle className="text-xl">Novo agendamento</DialogTitle>
             <DialogDescription>
-              Crie um novo agendamento preenchendo os campos abaixo
+              Crie um novo agendamento preenchendo os campos
             </DialogDescription>
           </DialogHeader>
           <DialogMain>
