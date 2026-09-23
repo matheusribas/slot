@@ -10,8 +10,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import { LogOutIcon, SettingsIcon, UserIcon } from "lucide-react";
-import Image from "next/image";
+import Link from "next/link";
 
 export function Header() {
   // TODO: Fazer hook com os dados do usuário logado
@@ -19,15 +20,9 @@ export function Header() {
   const firstName = user.name.split(" ")[0];
 
   return (
-    <header className="flex justify-between items-center w-full px-10 py-6 gap-10">
+    <header className="flex justify-between items-center w-full pl-8 pr-10 min-h-[4rem] gap-10">
+      <SidebarTrigger />
       <span />
-      <Image
-        alt="logotipo da slot"
-        src="/logo-light.png"
-        width={100}
-        height={50}
-      />
-
       <DropdownMenu>
         <DropdownMenuTrigger
           render={
@@ -50,7 +45,10 @@ export function Header() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">
+          <DropdownMenuItem
+            variant="destructive"
+            render={<Link href="/login" />}
+          >
             <LogOutIcon />
             Sair
           </DropdownMenuItem>
