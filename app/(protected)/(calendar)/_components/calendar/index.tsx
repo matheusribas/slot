@@ -10,9 +10,9 @@ import {
   createViewWeek,
 } from "@schedule-x/calendar";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
+import { Temporal } from "temporal-polyfill";
 import { useTheme } from "next-themes";
 
-import "temporal-polyfill/global";
 import "@schedule-x/theme-shadcn/dist/index.css";
 import "./styles.css";
 

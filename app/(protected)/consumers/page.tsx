@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { TableConsumers } from "./_components/table-consumers";
 
 export const metadata: Metadata = {
   title: "Clientes | Slot",
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
 };
 export default function Consumers() {
   return (
-    <main className="flex flex-1 flex-col w-full pl-8 pr-10 py-6 gap-10">
+    <main className="flex flex-1 flex-col w-full pl-8 pr-10 pt-6 pb-10 gap-10">
       <div className="flex justify-between items-center">
         <div className="flex flex-col gap-2">
           <h2>Clientes</h2>
@@ -15,6 +16,8 @@ export default function Consumers() {
           </p>
         </div>
       </div>
+
+      <TableConsumers />
     </main>
   );
 }
