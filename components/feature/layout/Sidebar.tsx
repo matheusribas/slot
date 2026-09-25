@@ -1,5 +1,3 @@
-import logoLight from "@/assets/logo-light.png";
-import Image from "next/image";
 import {
   Sidebar as SidebarUI,
   SidebarContent,
@@ -17,18 +15,14 @@ import {
   WrenchIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { ImageLogo } from "@/components/feature/image-logo";
 
 export function Sidebar() {
   return (
     <SidebarUI collapsible="icon">
       <SidebarHeader className="mb-4">
         <Link href="/" about="voltar para home (Calendário)">
-          <Image
-            alt="logotipo da slot"
-            src={logoLight}
-            width={96}
-            height={31}
-          />
+          <ImageLogo />
         </Link>
       </SidebarHeader>
       <SidebarContent>

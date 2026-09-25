@@ -1,6 +1,6 @@
-import { Footer } from "@/components/feature/layout/Footer";
-import { Header } from "@/components/feature/layout/Header";
-import { Sidebar } from "@/components/feature/layout/Sidebar";
+import { Footer } from "@/components/feature/layout/footer";
+import { Header } from "@/components/feature/layout/header";
+import { Sidebar } from "@/components/feature/layout/sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function Layout({ children }: LayoutProps<"/">) {

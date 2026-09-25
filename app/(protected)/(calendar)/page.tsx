@@ -1,5 +1,5 @@
-import Calendar from "@/components/feature/Calendar";
-import { ModalCreateEvent } from "@/components/feature/ModalCreateEvent";
+import Calendar from "@/components/feature/calendar";
+import { ModalCreateEvent } from "@/components/feature/modal-create-event";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export default function Home() {
         <div className="flex flex-col gap-2">
           <h2>Calendário</h2>
           <p className="text-muted-foreground">
-            Aqui você pode visualizar e gerenciar seu calendário.
+            Aqui você pode visualizar e gerenciar seus agendamentos.
           </p>
         </div>
 

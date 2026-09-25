@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNextCalendarApp, ScheduleXCalendar } from "@schedule-x/react";
 import {
   createViewDay,
@@ -10,11 +10,15 @@ import {
   createViewWeek,
 } from "@schedule-x/calendar";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
+import { useTheme } from "next-themes";
+
 import "temporal-polyfill/global";
 import "@schedule-x/theme-shadcn/dist/index.css";
 import "./styles.css";
 
 export default function Calendar() {
+  const { resolvedTheme } = useTheme();
+
   const eventsService = useState(() => createEventsServicePlugin())[0];
   const [dayBoundaries] = useState({
     start: "06:00",
@@ -53,7 +57,6 @@ export default function Calendar() {
     theme: "shadcn",
     locale: "pt-BR",
     timezone: "America/Sao_Paulo",
-    isDark: true,
     dayBoundaries,
     calendars: typesCalendar,
     views: [
@@ -97,6 +100,12 @@ export default function Calendar() {
       },
     },
   });
+
+  useEffect(() => {
+    if (calendar) {
+      calendar.setTheme(resolvedTheme === "dark" ? "dark" : "light");
+    }
+  }, [calendar, resolvedTheme]);
 
   return (
     <div>
