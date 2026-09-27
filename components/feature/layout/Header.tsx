@@ -27,7 +27,7 @@ export function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center w-full pl-6 pr-10 min-h-16 gap-10">
+    <header className="flex justify-between items-center w-full sm:pl-6 sm:pr-10 sm:min-h-16 sm:gap-10 pl-4 pr-4 min-h-16 gap-6">
       <SidebarTrigger />
       <span />
       <DropdownMenu>

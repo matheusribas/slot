@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col w-full pl-8 pr-10 pt-6 pb-10 gap-10">
+    <>
       <div className="flex justify-between items-center">
         <div className="flex flex-col gap-2">
           <h2>Calendário</h2>
@@ -21,6 +21,6 @@ export default function Home() {
       </div>
 
       <Calendar />
-    </main>
+    </>
   );
 }

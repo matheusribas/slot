@@ -87,6 +87,7 @@ export const columns = columnHelper.columns([
     cell: () => {
       return (
         <div className="w-full flex justify-center">
+          {/* // TODO jogar modal para um gerenciador de estado para abri-lo */}
           <Button variant="outline" className="flex gap-2">
             <PlusIcon />
             Novo agendamento
