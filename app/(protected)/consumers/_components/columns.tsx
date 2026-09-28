@@ -2,9 +2,7 @@
 
 import { createColumnHelper } from "@tanstack/react-table";
 import { format, parseISO } from "date-fns";
-import { Button } from "@/components/ui/button";
 import { DataTableFeaturesType } from "@/components/feature/data-table/data-table-features";
-import { PlusIcon } from "lucide-react";
 import { formatPhone } from "@/utils/formatPhone";
 import {
   Tooltip,
@@ -12,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ConsumersType } from "@/services/consumers/data";
+import { ButtonModalTrigger } from "./button-modal-trigger";
 
 const columnHelper = createColumnHelper<DataTableFeaturesType, ConsumersType>();
 
@@ -87,11 +86,7 @@ export const columns = columnHelper.columns([
     cell: () => {
       return (
         <div className="w-full flex justify-center">
-          {/* // TODO jogar modal para um gerenciador de estado para abri-lo */}
-          <Button variant="outline" className="flex gap-2">
-            <PlusIcon />
-            Novo agendamento
-          </Button>
+          <ButtonModalTrigger />
         </div>
       );
     },

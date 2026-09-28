@@ -1,6 +1,6 @@
-import { ModalCreateEvent } from "@/components/feature/modal-create-event";
 import { Metadata } from "next";
 import Calendar from "./_components/calendar";
+import { ButtonModalTrigger } from "./_components/button-modal-trigger";
 
 export const metadata: Metadata = {
   title: "Calendário | Slot",
@@ -17,7 +17,7 @@ export default function Home() {
           </p>
         </div>
 
-        <ModalCreateEvent />
+        <ButtonModalTrigger />
       </div>
 
       <Calendar />
