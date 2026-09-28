@@ -6,14 +6,19 @@ import { useEffect, useState } from "react";
 import { InputDebounce } from "@/components/feature/input-debounce";
 import { getConsumers } from "@/services/consumers/controler";
 import { ConsumersType } from "@/services/consumers/data";
+import { useSearchParamsCustom } from "@/hooks/use-pagination";
 
 export function TableConsumers() {
-  // TODO: colocar paginação e search como query params
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 10,
+  const {
+    pagination = { pageIndex: 0, pageSize: 10 },
+    setPagination = () => {},
+    search = "",
+    setSearch = () => {},
+  } = useSearchParamsCustom({
+    pagination: true,
+    search: true,
   });
-  const [search, setSearch] = useState("");
+
   const [data, setData] = useState<{ count: number; data: ConsumersType[] }>({
     count: 0,
     data: [],
@@ -43,11 +48,8 @@ export function TableConsumers() {
   return (
     <div className="flex flex-col gap-4">
       <InputDebounce
-        onValueChange={(value) => {
-          setSearch(value);
-          setPagination((current) => ({ ...current, pageIndex: 0 }));
-        }}
         value={search}
+        onValueChange={setSearch}
         placeholder="Buscar nome, telefone ou email..."
         className="max-w-lg w-full"
       />
