@@ -11,8 +11,8 @@ import {
   CalendarDaysIcon,
   HotelIcon,
   UserRoundCheckIcon,
-  UsersIcon,
   WrenchIcon,
+  UsersRoundIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { ImageLogo } from "@/components/feature/image-logo";
@@ -42,11 +42,8 @@ export function Sidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Configurações</SidebarGroupLabel>
           <SidebarMenu>
-            <SidebarMenuButton
-              render={<Link href="/members" />}
-              tooltip="Membros"
-            >
-              <UsersIcon /> Membros
+            <SidebarMenuButton render={<Link href="/team" />} tooltip="Time">
+              <UsersRoundIcon /> Time
             </SidebarMenuButton>
             <SidebarMenuButton
               render={<Link href="/services" />}
