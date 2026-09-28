@@ -19,7 +19,7 @@ export const columns = columnHelper.columns([
     header: "Nome",
     cell({ row }) {
       const { name } = row.original;
-      return <p className="truncate">{name}</p>;
+      return <p className="truncate max-w-2xs">{name}</p>;
     },
   }),
   columnHelper.accessor("phone", {

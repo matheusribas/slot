@@ -1,4 +1,4 @@
-export type ModalType = "create-event";
+export type ModalType = "create-event" | "create-member";
 
 export interface ModalStateType {
   isOpen: boolean;

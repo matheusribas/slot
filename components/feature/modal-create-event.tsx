@@ -61,7 +61,7 @@ export function ModalCreateEvent() {
               <Input
                 id="title"
                 name="title"
-                placeholder="Ex.: Corte e barba"
+                placeholder="Corte e barba"
                 required
               />
             </Field>
