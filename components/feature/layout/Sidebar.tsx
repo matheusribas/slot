@@ -42,8 +42,8 @@ export function Sidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Configurações</SidebarGroupLabel>
           <SidebarMenu>
-            <SidebarMenuButton render={<Link href="/team" />} tooltip="Time">
-              <UsersRoundIcon /> Time
+            <SidebarMenuButton render={<Link href="/team" />} tooltip="Equipe">
+              <UsersRoundIcon /> Equipe
             </SidebarMenuButton>
             <SidebarMenuButton
               render={<Link href="/services" />}

@@ -23,7 +23,7 @@ export const columns = columnHelper.columns([
     },
   }),
   columnHelper.accessor("phone", {
-    header: "Telefone",
+    header: "Telefone (WhatsApp)",
     cell({ row }) {
       const { phone } = row.original;
       if (!phone) return "--";

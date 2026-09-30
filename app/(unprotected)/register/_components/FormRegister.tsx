@@ -45,7 +45,7 @@ export function FormRegister() {
             )}
           </Field>
           <Field>
-            <FieldLabel htmlFor="phone">Telefone/WhatsApp</FieldLabel>
+            <FieldLabel htmlFor="phone">Telefone (WhatsApp)</FieldLabel>
             <Input
               id="phone"
               {...registerForm("phone")}

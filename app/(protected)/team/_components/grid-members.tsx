@@ -1,3 +1,3 @@
 export function GridMembers() {
-  return <div>Lista de Integrantes</div>;
+  return <div>Blocos de Integrantes</div>;
 }

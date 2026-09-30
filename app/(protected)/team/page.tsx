@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { ButtonModalTrigger } from "./_components/button-modal-trigger";
-import { GridMembers } from "./_components/grid-members";
+import { ContentMembers } from "./_components/content-members";
 
 export const metadata: Metadata = {
-  title: "Time | Slot",
+  title: "Equipe | Slot",
   description: "Encontre um horário para um serviço de forma rápida e prática.",
 };
 export default function Team() {
@@ -11,16 +11,16 @@ export default function Team() {
     <>
       <div className="flex flex-col gap-4 sm:justify-between sm:items-center sm:flex-row">
         <div className="flex flex-col gap-2">
-          <h2>Time</h2>
+          <h2>Equipe</h2>
           <p className="text-muted-foreground">
-            Aqui você pode visualizar e gerenciar seu time.
+            Aqui você pode visualizar e gerenciar seu equipe.
           </p>
         </div>
 
         <ButtonModalTrigger />
       </div>
 
-      <GridMembers />
+      <ContentMembers />
     </>
   );
 }

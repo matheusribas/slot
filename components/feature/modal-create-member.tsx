@@ -56,7 +56,7 @@ export function ModalCreateMember() {
         <DialogHeader>
           <DialogTitle className="text-xl">Novo integrante</DialogTitle>
           <DialogDescription>
-            Crie um novo integrante do time preenchendo os campos
+            Crie um novo integrante da equipe preenchendo os campos
           </DialogDescription>
         </DialogHeader>
         <DialogMain>
@@ -71,10 +71,10 @@ export function ModalCreateMember() {
               />
             </Field>
             <Field>
-              <FieldLabel htmlFor="whatsapp">Telefone (WhatsApp)</FieldLabel>
+              <FieldLabel htmlFor="phone">Telefone (WhatsApp)</FieldLabel>
               <Input
-                id="whatsapp"
-                name="whatsapp"
+                id="phone"
+                name="phone"
                 type="tel"
                 inputMode="numeric"
                 autoComplete="tel"
@@ -88,15 +88,17 @@ export function ModalCreateMember() {
               <FieldLabel>Serviços</FieldLabel>
               <Select>
                 <SelectTrigger className="h-8 w-[70px]">
-                  <SelectValue placeholder="Corte" />
+                  <SelectValue placeholder="Corte de cabelo" />
                 </SelectTrigger>
                 <SelectContent side="bottom">
                   {/* // TODO: trazer serviços */}
-                  {["Corte", "Barba", "Sobrancelha"].map((service) => (
-                    <SelectItem key={service} value={`${service}`}>
-                      {service}
-                    </SelectItem>
-                  ))}
+                  {["Corte de cabelo", "Corte de barba", "Sobrancelha"].map(
+                    (service) => (
+                      <SelectItem key={service} value={`${service}`}>
+                        {service}
+                      </SelectItem>
+                    ),
+                  )}
                 </SelectContent>
               </Select>
               <FieldDescription>

@@ -21,7 +21,7 @@ export default function Calendar() {
 
   const eventsService = useState(() => createEventsServicePlugin())[0];
   const [dayBoundaries] = useState({
-    start: "06:00",
+    start: "09:00",
     end: "18:00",
   });
   const [typesCalendar] = useState({
@@ -29,12 +29,12 @@ export default function Calendar() {
       colorName: "beard",
       lightColors: {
         main: "#1cf9b0",
-        container: "#dafff0",
+        container: "#eee",
         onContainer: "#004d3d",
       },
       darkColors: {
         main: "#c0fff5",
-        onContainer: "#e6fff5",
+        onContainer: "#eee",
         container: "#42a297",
       },
     },
@@ -42,12 +42,12 @@ export default function Calendar() {
       colorName: "hair",
       lightColors: {
         main: "#1c7df9",
-        container: "#d2e7ff",
+        container: "#eee",
         onContainer: "#002859",
       },
       darkColors: {
         main: "#c0dfff",
-        onContainer: "#dee6ff",
+        onContainer: "#eee",
         container: "#426aa2",
       },
     },
@@ -76,7 +76,7 @@ export default function Calendar() {
           "2026-09-02T10:00:00-03:00[America/Sao_Paulo]",
         ),
         end: Temporal.ZonedDateTime.from(
-          "2026-09-02T11:00:00-03:00[America/Sao_Paulo]",
+          "2026-09-02T10:45:00-03:00[America/Sao_Paulo]",
         ),
       },
       {
@@ -85,10 +85,10 @@ export default function Calendar() {
         people: ["Reni Ribas"],
         calendarId: "beard",
         start: Temporal.ZonedDateTime.from(
-          "2026-09-02T12:00:00-03:00[America/Sao_Paulo]",
+          "2026-09-02T11:00:00-03:00[America/Sao_Paulo]",
         ),
         end: Temporal.ZonedDateTime.from(
-          "2026-09-02T13:00:00-03:00[America/Sao_Paulo]",
+          "2026-09-02T11:45:00-03:00[America/Sao_Paulo]",
         ),
       },
     ],
