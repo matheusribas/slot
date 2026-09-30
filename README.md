@@ -1,106 +1,148 @@
 # Slot
 
-Sistema de agendamento e gestão de agenda para serviços pessoais, com foco em uma experiência moderna de agendamento e visualização de calendário.
+Sistema de agendamento e gestão de agenda para serviços pessoais, com foco em uma experiência moderna, responsiva e orientada ao fluxo de operação do negócio.
 
-O projeto foi pensado como uma solução para clientes e prestadores de serviços que precisam organizar horários de forma simples, visual e intuitiva. A interface combina autenticação, fluxo de cadastro e um calendário de agenda com suporte a criação de eventos.
+O projeto foi pensado para representar um painel administrativo de agendamento para negócios como barbearia, estética, consultório ou salão, combinando calendário, gestão de clientes, pessoas e serviços em uma interface clara e comercialmente amigável.
 
-## Sobre o projeto
+## Visão geral
 
-O Slot é uma aplicação web construída com Next.js que simula um painel de agendamento para um negócio de serviços como barbearia, estética ou consultórios. O principal objetivo é permitir que o usuário:
+O Slot já conta com a base de um sistema funcional de agenda, com estrutura de rotas públicas e privadas, área administrativa, componentes reutilizáveis e fluxo de interação em destaque. A aplicação busca unir:
 
-- acesse sua conta ou crie uma nova;
-- visualize uma agenda em diferentes perspectivas;
-- cadastre novos agendamentos;
-- tenha uma interface moderna e responsiva para gestão de horários.
+- autenticação simples de acesso;
+- visualização de agenda em diferentes perspectivas;
+- criação de agendamentos;
+- gestão de clientes, equipe e serviços;
+- interface moderna com design system consistente.
 
-Apesar de ainda estar em evolução, a estrutura já evidencia o pensamento de produto e arquitetura de uma aplicação real: rotas públicas e privadas, componentes reutilizáveis, formulários validados e integração com um calendário dinâmico.
+## Funcionalidades implementadas
 
-## Stack principal
+### 1. Fluxo de autenticação
+
+A aplicação já inclui páginas dedicadas para:
+
+- login;
+- cadastro de nova conta;
+- formulários com validação por `react-hook-form` + `zod`;
+- separação entre áreas públicas e privadas por grupos de rotas no App Router.
+
+Essas telas servem como base para evolução para autenticação real, sessão e backend.
+
+### 2. Área protegida com layout administrativo
+
+A parte logada já possui:
+
+- sidebar de navegação;
+- header e footer compartilhados;
+- estrutura modular por módulos (`Calendar`, `Clients`, `Team`, `Services`, `Accounts`);
+- renderização de modais globais em um ponto central do app.
+
+Isso deixa a aplicação preparada para crescer em múltiplos módulos sem perder organização.
+
+### 3. Calendário de agendamentos
+
+O calendário foi implementado com `@schedule-x/react` e `@schedule-x/calendar`, com:
+
+- visão diária;
+- visão semanal;
+- visão de agenda;
+- visão mensal;
+- timezone configurada para `America/Sao_Paulo`;
+- personalização visual com tema shadcn;
+- suporte a diferentes tipos de serviço com cores específicas.
+
+Também foi integrada a biblioteca `temporal-polyfill` para manipulação de datas com melhor suporte de timezone e consistência no fluxo do calendário.
+
+### 4. Modal de criação de eventos
+
+A criação de agendamento foi estruturada em um modal com campos para:
+
+- título do agendamento;
+- data;
+- horário;
+- duração;
+- descrição;
+- seleção de data via calendário popover.
+
+A UX foi pensada para facilitar a operação de cadastros rápidos e com melhor organização do expediente.
+
+### 5. Gestão de equipe
+
+A página de equipe foi implementada com:
+
+- listagem de integrantes;
+- modal para criação de integrante;
+- campos de nome, telefone e serviços;
+- configuração de horário de expediente por dia da semana;
+- modelagem inicial para organização de equipe e disponibilidade.
+
+### 6. Gestão de clientes
+
+A área de clientes já apresenta estrutura de tabela com dados e componentes reutilizáveis para listagem, paginação e filtros, com uso de:
+
+- `@tanstack/react-table`;
+- componentes padronizados em `components/ui`;
+- layout de listagem para dados de clientes e gestão de registros.
+
+### 7. Estrutura de serviços e contas
+
+As páginas de serviços e contas já existem como módulos da aplicação, servindo como base para:
+
+- cadastro, listagem e organização de serviços oferecidos;
+- gestão de contas / usuários / perfis vinculados ao negócio.
+
+### 8. Design system e estado global
+
+O projeto usa:
+
+- `Tailwind CSS` para estilização;
+- `shadcn/ui` como base visual da interface;
+- `zustand` para estado global de modais e fluxos de UI;
+- `next-themes` para alternância de tema claro/escuro;
+- `lucide-react` para ícones.
+
+## Stack atual
+
+### Frontend e app
 
 - Next.js 16
 - React 19
 - TypeScript
 - Tailwind CSS
 - shadcn/ui
-- React Hook Form
-- Zod
-- Schedule X
-- date-fns
-- Lucide React
+- App Router do Next.js
 
-## Conceitos de Next.js aplicados
+### Bibliotecas principais
 
-### App Router
+- `@schedule-x/react`
+- `@schedule-x/calendar`
+- `@schedule-x/events-service`
+- `@schedule-x/theme-shadcn`
+- `temporal-polyfill`
+- `date-fns`
+- `react-hook-form`
+- `@hookform/resolvers`
+- `zod`
+- `@tanstack/react-table`
+- `zustand`
+- `next-themes`
+- `react-day-picker`
+- `lucide-react`
+- `clsx`
+- `tailwind-merge`
+- `class-variance-authority`
+- `@base-ui/react`
 
-O projeto usa a estrutura do App Router do Next.js, com organização por pastas em `app/` e roteamento baseado em convenções de arquivos e diretórios.
+## Estrutura do projeto
 
-Exemplos no projeto:
+A organização atual do projeto está orientada para escalabilidade, com separação de responsabilidades em:
 
-- `app/(unprotected)/login` para páginas públicas de autenticação
-- `app/(protected)/(calendar)` para a área autenticada do calendário
-- `app/layout.tsx` como layout raiz da aplicação
-- `app/(protected)/layout.tsx` para a área interna com componentes compartilhados
-
-Esse padrão demonstra familiaridade com a modelagem moderna de aplicações em Next.js, em vez de depender apenas de páginas estáticas simples.
-
-### Layouts e agrupamento de rotas
-
-O uso de `layout.tsx` e de grupos de rotas como `(protected)` e `(unprotected)` mostra uma organização que separa fluxos de autenticação da experiência logada. Isso é um conceito importante em apps reais, pois ajuda a controlar autenticação, layout compartilhado e fluxo de navegação.
-
-### Metadata
-
-A aplicação também utiliza `export const metadata` em páginas e layouts para definir títulos e descrições, aproveitando as capacidades nativas do Next.js para SEO e UX de navegação.
-
-### Componentes do lado cliente e servidor
-
-A aplicação combina:
-
-- componentes do lado do servidor, como páginas e layouts;
-- componentes do lado do cliente com `"use client"`, usados para formulários, interações e calendário.
-
-Isso é uma prática muito comum em Next.js, principalmente quando se precisa de interatividade dinâmica com React sem perder a força do render do servidor.
-
-### Server Actions
-
-O arquivo `app/actions.ts` usa a convenção de Server Actions do Next.js, com a diretiva `"use server"`. Esse é um conceito estratégico da plataforma e mostra a intenção de centralizar ações do backend, como login e registro, em um ponto único e com acesso ao ambiente do servidor.
-
-Embora a lógica de autenticação ainda esteja em desenvolvimento, a estrutura já está preparada para evoluir para integração com banco de dados, sessão, JWT, API REST ou NextAuth.
-
-## Tecnologias e decisões de implementação
-
-### Interface e design system
-
-- Tailwind CSS para estilização eficiente e consistente
-- shadcn/ui para componentes padronizados e reutilizáveis
-- Lucide React para ícones
-- estrutura modular de UI em `components/ui` e `components/feature`
-
-A organização dos componentes facilita manutenção, reutilização e escala do projeto.
-
-### Validação de formulários
-
-A aplicação usa `react-hook-form` com `zod` para validar login e cadastro, reduzindo erros de dados no cliente e deixando o código mais seguro e previsível.
-
-### Calendário e agendamento
-
-O calendário foi implementado com `@schedule-x/react` e `@schedule-x/calendar`, com suporte a vários tipos de visualização, como:
-
-- dia
-- semana
-- agenda
-- mês
-
-A integração com `Temporal` e a configuração de timezone e horários no Brasil demonstram atenção à experiência real do usuário e à lógica de agendamento.
-
-### UX e responsividade
-
-A interface foi pensada para ser simples e moderna, com:
-
-- layout de páginas limpo;
-- formulários com validação visual;
-- modal de criação de eventos;
-- comportamento responsivo em telas menores;
-- navegação clara entre fluxo público e fluxo protegido.
+- `app/`: rotas, layouts e páginas da aplicação
+- `components/ui/`: componentes base do design system
+- `components/feature/`: módulos e blocos específicos do produto
+- `services/`: dados e controladores de módulo
+- `stores/`: estado global da aplicação
+- `types/`: tipos do domínio
+- `lib/`: utilitários gerais
 
 ## Como executar localmente
 
@@ -115,32 +157,34 @@ A interface foi pensada para ser simples e moderna, com:
 pnpm install
 ```
 
-### Iniciar ambiente de desenvolvimento
+### Iniciar o ambiente de desenvolvimento
 
 ```bash
 pnpm run dev
 ```
 
-A aplicação ficará disponível em:
+A aplicação estará disponível em:
 
 ```bash
 http://localhost:3000
 ```
 
-## Roadmap e próximos passos
+## Observações de implementação
 
-O projeto já possui base sólida para evoluir em direção a uma solução completa de agendamento. Algumas melhorias naturais incluem:
+O projeto já está em uma fase de protótipo funcional com boa base visual e estrutural, porém ainda há partes em desenvolvimento, especialmente no fluxo real de autenticação e persistência de dados. Os `Server Actions` já foram estruturados em `app/actions.ts`, mas ainda precisam de integração com banco de dados, sessão e regras de negócio reais.
+
+## Roadmap
+
+Próximos passos naturais para evoluir este projeto:
 
 - autenticação real com banco de dados e sessão;
-- persistência de usuários e agendamentos;
-- integração com back-end/API REST ou server actions com Prisma;
-- painel administrativo com gestão de serviços e profissionais;
-- disponibilidade por horários e regras de bloqueio;
-- notificações, confirmação por e-mail ou WhatsApp;
-- deploy em Vercel ou infraestrutura cloud.
+- persistência de clientes, agendamentos e profissionais;
+- integração com API REST ou backend com Prisma;
+- regras de disponibilidade e bloqueios de horários;
+- gestão completa de serviços com preços, duração e categorias;
+- confirmações por WhatsApp, e-mail e notificações;
+- deploy em ambiente de produção com Vercel ou infraestrutura cloud.
 
 ## Conclusão
 
-O Slot representa uma aplicação prática de gestão de agenda com foco em usabilidade, arquitetura moderna e uso consciente de recursos do Next.js. O projeto destaca tanto a capacidade de criar interfaces bonitas e funcionais quanto a compreensão de conceitos importantes da plataforma, como App Router, layouts, metadata, componentização, server actions e integração com bibliotecas especializadas.
-
-É uma base sólida para evoluir em direção a um produto mais completo, com boas práticas de desenvolvimento e apelo para recrutadores e times técnicos que buscam profissionais com visão de produto e arquitetura frontend moderna.
+O Slot já consolidou uma base sólida de produto, com arquitetura moderna em Next.js, organização por módulos, componentes reutilizáveis e experiência de agenda funcional. O projeto demonstra maturidade na combinação entre UX, design system e ferramentas de frontend atuais, mantendo a aplicação pronta para evoluir para um produto de agendamento mais completo e real.
